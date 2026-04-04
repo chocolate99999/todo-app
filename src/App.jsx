@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 const initialTodos = [
-  { id: 1, text: '買牛奶' },
-  { id: 2, text: '寫作業'},
-  { id: 3, text: '運動' },
+  { id: 1, text: '買牛奶', completed: false },
+  { id: 2, text: '寫作業', completed: false },
+  { id: 3, text: '運動', completed: false },
 ]
 
 function App() {
@@ -17,10 +17,22 @@ function App() {
     const newTodo = {
       id: Date.now(),
       text: inputValue.trim(),
+      completed: false
     }
 
     setTodos([...todos, newTodo]);
     setInputValue('');
+  }
+
+  function handleToggle(id) {
+    setTodos(
+      todos.map((todo) => {
+        if(todo.id === id) {
+          return { ...todo, completed: !todo.completed }
+        }
+        return todo;
+      })
+    )
   }
 
   return (
@@ -44,7 +56,22 @@ function App() {
         {
           todos.map((todo) => (
             <li key={todo.id}>
-              {todo.text}
+              <input 
+                type="checkbox"
+                checked={todo.completed}
+                onChange={() =>
+                  handleToggle(todo.id)
+                }
+              />
+
+              <span
+                style={{
+                  textDecoration: todo.completed ? 'line-through' : 'none',
+                  color: todo.completed ? 'gray' : 'black',
+                }}
+              >
+                {todo.text}
+              </span>
             </li>
           ))
         }
