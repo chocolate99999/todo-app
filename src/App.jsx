@@ -9,6 +9,7 @@ const initialTodos = [
 function App() {
   const [todos, setTodos] = useState(initialTodos);
   const [inputValue, setInputValue] = useState('');
+  const [filter, setFilter] = useState('all');
 
   function handleAdd() {
     if (inputValue.trim() === '')
@@ -41,6 +42,17 @@ function App() {
     )                                        // 被點擊的項目會被過濾掉
   }
 
+  function getFilteredTodos(){
+    if (filter === 'active') {
+      return todos.filter((todo) => todo.completed === false);
+    }
+    if (filter === 'completed'){
+      return todos.filter((todo) => todo.completed === true);
+    }
+    return todos;
+  }
+  const filteredTodos = getFilteredTodos();
+
   return (
     <div>
       <h1>我的待辦清單</h1>
@@ -58,9 +70,15 @@ function App() {
         <button onClick={handleAdd}>新增</button>
       </div>
 
+      <div>
+        <button onClick={() => setFilter('all')}>全部</button>
+        <button onClick={() => setFilter('active')}>未完成</button>
+        <button onClick={() => setFilter('completed')}>已完成</button>
+      </div>
+
       <ul>
         {
-          todos.map((todo) => (
+          filteredTodos.map((todo) => (
             <li key={todo.id}>
               <input 
                 type="checkbox"
