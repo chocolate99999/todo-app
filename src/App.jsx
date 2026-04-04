@@ -35,6 +35,12 @@ function App() {
     )
   }
 
+  function handleDelete(id) {
+    setTodos(                                // filter(): 把符合條件的留下來
+      todos.filter((todo) => todo.id !== id) // 沒有被點擊的項目會被保留
+    )                                        // 被點擊的項目會被過濾掉
+  }
+
   return (
     <div>
       <h1>我的待辦清單</h1>
@@ -72,6 +78,12 @@ function App() {
               >
                 {todo.text}
               </span>
+
+              <button 
+                onClick={() => 
+                  handleDelete(todo.id)
+                }>刪除
+              </button>
             </li>
           ))
         }
