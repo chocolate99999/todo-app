@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import TodoInput from './TodoInput';
+import TodoFilter from './TodoFilter';
+import TodoList from './TodoList';
 
 const initialTodos = [
   { id: 1, text: '買牛奶', completed: false },
@@ -57,7 +60,7 @@ function App() {
     <div>
       <h1>我的待辦清單</h1>
 
-      <div>
+      {/* <div>
         <input 
           type="text"
           value={inputValue} 
@@ -68,15 +71,24 @@ function App() {
         />
 
         <button onClick={handleAdd}>新增</button>
-      </div>
+      </div> */}
+      <TodoInput
+          inputValue={inputValue}
+          onInputChange={setInputValue}
+          onAdd={handleAdd}
+      />
 
-      <div>
+      {/* <div>
         <button onClick={() => setFilter('all')}>全部</button>
         <button onClick={() => setFilter('active')}>未完成</button>
         <button onClick={() => setFilter('completed')}>已完成</button>
-      </div>
+      </div> */}
+      <TodoFilter
+        filter={filter}
+        onFilterChange={setFilter}
+      />
 
-      <ul>
+      {/* <ul>
         {
           filteredTodos.map((todo) => (
             <li key={todo.id}>
@@ -105,7 +117,12 @@ function App() {
             </li>
           ))
         }
-      </ul>
+      </ul> */}
+      <TodoList
+        todos={filteredTodos}
+        onToggle={handleToggle}
+        onDelete={handleDelete}
+      />
     </div>
   )
 }
