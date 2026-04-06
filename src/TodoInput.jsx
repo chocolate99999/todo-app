@@ -1,7 +1,8 @@
 function TodoInput({ inputValue, onInputChange, onAdd }){
   return (
-    <div>
+    <div className="input-row">
       <input 
+          className="todo-input"
           type="text"
           value={inputValue} 
           onChange={(e) => {
@@ -10,7 +11,7 @@ function TodoInput({ inputValue, onInputChange, onAdd }){
           placeholder="請輸入待辦事項..."
         />
 
-      <button onClick={onAdd}>新增</button>
+      <button className="add-button" onClick={onAdd}>新增</button>
     </div>
   )
 }

@@ -57,8 +57,8 @@ function App() {
   const filteredTodos = getFilteredTodos();
 
   return (
-    <div>
-      <h1>我的待辦清單</h1>
+    <div className="app-container">
+      <h1 className="app-title">我的待辦清單</h1>
 
       {/* <div>
         <input 

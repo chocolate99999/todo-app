@@ -9,3 +9,142 @@ body {
   background: #f5f5f5;
   padding: 2rem;
 }
+
+/* 整體容器 */
+.app-container {
+  max-width: 480px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  padding: 2rem;
+}
+
+/* 標題 */
+.app-title {
+  font-size: 22px;
+  font-weight: 500;
+  color: #1a1a1a;
+  margin-bottom: 1.5rem;
+}
+
+/* = 輸入區 = */
+.input-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 1rem;
+  /* outline: olivedrab 1px solid; */
+}
+
+.todo-input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none; /* 把瀏覽器預設的藍色外框關掉 */
+  transition: border-color 0.2s;
+}
+
+.todo-input:focus {
+  border-color: #333;
+}
+
+.add-button {
+  padding: 8px 16px;
+  background: #333;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.add-button:hover {
+  background-color: #555;
+}
+
+/* = 篩選按鈕區 = */
+.filter-row {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 1.2rem;
+}
+
+.filter-button {
+  padding: 6px 14px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  font-size: 13px;
+  cursor: pointer;
+  background: transparent;
+  color: #666;
+  transition: all 0.2s;
+}
+
+.filter-button:hover {
+  border-color: #333;
+  color: #333
+}
+
+.filter-button.active {
+  background: #333;
+  color: #fff;
+  border-color: #333;
+}
+
+/* = 清單 = */
+.todo-list {
+  list-style: none;
+
+  /* outline: blue 1px solid; */
+}
+
+/* 每個待辦項目 */
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 0;
+  border-bottom: 1px solid #f0f0f0;
+
+  /* outline: orangered 1px solid; */
+}
+
+.todo-item:last-child {
+  border-bottom: none;
+}
+
+.todo-checkbox {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: #333;
+}
+
+.todo-text {
+  flex: 1;
+  font-size: 14px;
+  color: #1a1a1a;
+}
+
+.todo-text.completed {
+  text-decoration: line-through; 
+  color: #aaa;
+}
+
+.delete-button {
+  padding: 4px 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 12px;
+  background: transparent;
+  color: #999;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.delete-button:hover {
+  border-color: #e74c3c;
+  color: #e74c3c;
+}
