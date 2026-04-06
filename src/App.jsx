@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect  } from 'react';
 import TodoInput from './TodoInput';
 import TodoFilter from './TodoFilter';
 import TodoList from './TodoList';
@@ -10,9 +10,20 @@ const initialTodos = [
 ]
 
 function App() {
-  const [todos, setTodos] = useState(initialTodos);
+  /* useState 裡面傳一個函數，React 只會在第一次載入時執行這個函數來決定初始值 */
+  const [todos, setTodos] = useState(() => {
+    const saved = localStorage.getItem('todos');
+    if (saved) {
+      return JSON.parse(saved);
+    }
+    return initialTodos
+  });
   const [inputValue, setInputValue] = useState('');
   const [filter, setFilter] = useState('all');
+
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos))
+  }, [todos])
 
   function handleAdd() {
     if (inputValue.trim() === '')
