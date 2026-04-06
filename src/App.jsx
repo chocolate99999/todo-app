@@ -56,6 +56,8 @@ function App() {
   }
   const filteredTodos = getFilteredTodos();
 
+  const completedCount = todos.filter((todo) => todo.completed).length;
+
   return (
     <div className="app-container">
       <h1 className="app-title">我的待辦清單</h1>
@@ -123,6 +125,10 @@ function App() {
         onToggle={handleToggle}
         onDelete={handleDelete}
       />
+
+      <p className="todo-count">
+        共 {todos.length} 項，已完成 {completedCount} 項
+      </p>
     </div>
   )
 }
